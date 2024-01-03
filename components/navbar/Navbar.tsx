@@ -1,30 +1,32 @@
+import { HomeIcon } from "@primer/octicons-react"
+import Link from "next/link"
 
-
-const temporalAsync = () => {
-   return new Promise((resolve) => {
-      setTimeout(() => {
-         resolve(true)
-      }, 2000);
-   })
-}
+const navsItems = [
+   { path: '/about', text: 'About' },
+   { path: '/pricing', text: 'Pricing' },
+   { path: '/contact', text: 'Contact' },
+]
 
 
 export const Navbar = async() => {
-   console.log('Este console.log solo se ve en la consola, no en el navagador.')
 
-   await temporalAsync()
 
    return (
       <nav className="flex bg-blue-800 bg-opacity-30 p-2 m-2 rounded">
-         <span>Home</span>
+         <Link href={'/'} className="flex items-center">
+            <HomeIcon className="mr-2" />
+            <span>Home</span>
+         </Link>
 
-         <div className="flex flex-1">
+         <div className="flex flex-1"></div>
 
-         </div>
-
-         <a className="mx-2" href="/about">About</a>
-         <a className="mx-2" href="/pricing">Pricing</a>
-         <a className="mx-2" href="/contact">Contact</a>
+         {/* Creacion menu de forma dinamica */}
+         {
+            navsItems.map(navItem => (
+               <Link key={ navItem.path } className="mx-2" href={navItem.path}>{ navItem.text }</Link>
+            ))
+         }
+         
       </nav>
    )
 }
