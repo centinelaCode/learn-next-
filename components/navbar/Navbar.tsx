@@ -7,9 +7,7 @@ const navsItems = [
    { path: '/contact', text: 'Contact' },
 ]
 
-
 export const Navbar = async() => {
-
 
    return (
       <nav className="flex bg-blue-800 bg-opacity-30 p-2 m-2 rounded">
@@ -26,7 +24,7 @@ export const Navbar = async() => {
                <Link key={ navItem.path } className="mx-2" href={navItem.path}>{ navItem.text }</Link>
             ))
          }
-         
+
       </nav>
    )
 }
